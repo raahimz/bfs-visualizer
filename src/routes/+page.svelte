@@ -103,6 +103,12 @@
 		slow: false
 	};
 
+	const resetClickedHandler = () => {
+		matrixVisitedIndexes = [];
+		matrix = Array.from({ length: 20 }, () => Array.from({ length: 20 }, () => 0));
+		nodesSelected = 0;
+	};
+
 	const nodeClickedHandler = (i, x) => {
 		if (nodesSelected >= 2) return;
 
@@ -172,12 +178,15 @@
 			</div>
 		</div>
 		<button
-			class="w-40 border-[1px] rounded-md border-black p-1 active:bg-black active:text-white"
+			class="w-28 border-[1px] rounded-md border-black p-1 active:bg-black active:text-white"
 			on:click={startClickedHandler}>Start</button
+		>
+		<button
+			class="w-28 border-[1px] rounded-md border-black p-1 active:bg-black active:text-white"
+			on:click={resetClickedHandler}>Reset</button
 		>
 		<p>Select 2 nodes</p>
 	</div>
-
 	<div class="h-2" />
 	<div class="container border-2 w-min p-2 flex flex-col gap-2 mr-auto ml-auto">
 		{#each matrix as row, i}
