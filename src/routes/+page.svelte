@@ -147,32 +147,38 @@
 	<h1 class="text-2xl font-bold">Breadth First Search: A Pathfinding Algorithm</h1>
 	<p>This application visualizes the patterns created by BFS</p>
 	<div class="h-2" />
-	<div class="flex flex-col justify-center">
-		<p>Speed</p>
-		<div class="w-40 ml-auto mr-auto">
-			<Select
-				items={simple}
-				on:select={({ detail }) => {
-					selected = detail.value;
-					if (selected == 'Fast') {
-						speedSelected.fast = true;
-						speedSelected.medium = false;
-						speedSelected.slow = false;
-					} else if (selected == 'Medium') {
-						speedSelected.fast = false;
-						speedSelected.medium = true;
-						speedSelected.slow = false;
-					} else if (selected == 'Slow') {
-						speedSelected.fast = false;
-						speedSelected.medium = false;
-						speedSelected.slow = true;
-					}
-				}}
-			/>
+	<div class="flex flex-row justify-evenly items-center w-[550px] ml-auto mr-auto">
+		<div class="flex flex-row gap-1 justify-center">
+			<div class="w-40 ml-auto mr-auto">
+				<Select
+					items={simple}
+					on:select={({ detail }) => {
+						selected = detail.value;
+						if (selected == 'Fast') {
+							speedSelected.fast = true;
+							speedSelected.medium = false;
+							speedSelected.slow = false;
+						} else if (selected == 'Medium') {
+							speedSelected.fast = false;
+							speedSelected.medium = true;
+							speedSelected.slow = false;
+						} else if (selected == 'Slow') {
+							speedSelected.fast = false;
+							speedSelected.medium = false;
+							speedSelected.slow = true;
+						}
+					}}
+				/>
+			</div>
 		</div>
+		<button
+			class="w-40 border-[1px] rounded-md border-black p-1 active:bg-black active:text-white"
+			on:click={startClickedHandler}>Start</button
+		>
+		<p>Select 2 nodes</p>
 	</div>
+
 	<div class="h-2" />
-	<p>Select 2 nodes</p>
 	<div class="container border-2 w-min p-2 flex flex-col gap-2 mr-auto ml-auto">
 		{#each matrix as row, i}
 			<div class="flex flex-row gap-2">
@@ -184,10 +190,6 @@
 			</div>
 		{/each}
 	</div>
-	<div class="h-2" />
-	<button class="border-[1px] rounded-md border-black p-1" on:click={startClickedHandler}
-		>Start</button
-	>
 </main>
 
 <style>
